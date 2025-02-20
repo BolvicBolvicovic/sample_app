@@ -1,0 +1,78 @@
+<header class="px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
+    <div class="flex items-center gap-4">
+      <a href="/">
+        <img src={~p"/images/logo.svg"} width="36" />
+      </a>
+      <p class="bg-brand/5 text-brand rounded-full px-2 font-medium leading-6">
+        v<%= Application.spec(:phoenix, :vsn) %>
+      </p>
+      <p class="text-xl" >Sample App</p>
+    </div>
+    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
+      <a href="/" class="hover:text-zinc-700">
+        Home
+      </a>
+      <a href="/help" class="hover:text-zinc-700">
+        Help
+      </a>
+      <%= if @current_user do %>
+      <a href="/" class="hover:text-zinc-700">
+        Users
+      </a>
+      <div class="group relative inline-block text-left">
+        <button
+          class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 focus:outline-none"
+          aria-expanded="true"
+          aria-haspopup="true"
+        >
+          Account
+        </button>
+        <div
+          class="absolute mt-2 w-32 bg-white shadow-md rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabindex="-1"
+        >
+          <a
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            role="menuitem"
+            href={~p"/users/#{@current_user.id}"}
+          >
+            Profile
+          </a>
+          <.link
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            role="menuitem"
+            method="delete"
+            href={~p"/logout"}
+          >
+            Log out
+          </.link>
+        </div>
+      </div> 
+      <% else %>
+      <a
+        href="/login"
+        class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80"
+      >
+        Log in
+      </a>
+      <% end %>
+    </div>
+  </div>
+</header>
+<main class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-2xl">
+    <.flash_group flash={@flash} />
+    <%= @inner_content %>
+  </div>
+  <div class="flex flex-col mt-16 gap-16">
+    <hr class="border-t bg-zinc-400 w-3/4 place-self-center">
+    <section class="flex flex-row items-center justify-end gap-4">
+      <.default_link color="blue" size="w-20 h-8" navigate={~p"/about"}><p>About</p></.default_link>
+      <.default_link color="red" size="w-20 h-8" navigate={~p"/contact"}><p>Contact</p></.default_link>
+    </section>
+  </div>
+</main>

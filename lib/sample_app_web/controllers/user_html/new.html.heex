@@ -1,0 +1,12 @@
+<section class="flex flex-col gap-4">
+  <h1 class="text-3xl sm:text-5xl">Sign up</h1>
+  <.simple_form for={@user} action="/users" phx-change="validate" phx-submit="create">
+    <.input field={@user[:name]} label="Name" />
+    <.input field={@user[:email]} label="Email" />
+    <.input type="password" field={@user[:password]} label="Password" />
+    <.input type="password" field={@user[:password_confirmation]} label="Password Confirmation" />
+    <:actions>
+      <.button>Create my account</.button>
+    </:actions>
+  </.simple_form>
+</section>

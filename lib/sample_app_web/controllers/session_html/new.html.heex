@@ -1,0 +1,10 @@
+<section>
+  <h1 class="text-3xl sm:text-5xl">Log In</h1>
+  <.simple_form for={@login} action="/login" phx-submit="create" phx-change="validate">
+    <.input field={@login[:email]} label="Email" placeholder="user@example.com"/>
+    <.input type="password" field={@login[:password]} label="Password" placeholder="**********"/>
+    <:actions>
+      <.button>Connect</.button>
+    </:actions>
+  </.simple_form>
+</section>
