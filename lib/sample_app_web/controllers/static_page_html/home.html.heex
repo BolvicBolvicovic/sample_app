@@ -1,6 +1,6 @@
 <section class="flex flex-col justify-center items-center gap-y-8">
   <h1 class="text-3xl sm:text-5xl">Welcome to the Sample App</h1>
-  <p>This is the home page for the Phoenix Tutorial sample appication.</p>
+  <p>This is the home page for the Phoenix Tutorial sample application.</p>
   <%= if @current_user do %>
   <.default_link color="slate" size="w-40 h-14" navigate={~p"/users/#{@current_user.id}"}><p>Your profile</p></.default_link>
   <% else %>
