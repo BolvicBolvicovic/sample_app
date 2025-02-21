@@ -43,8 +43,11 @@ defmodule SampleAppWeb.UserSignupTest do
     assert user_record_before + 1 == user_record_after
     user = Repo.get_by(User, email: user_email)
     assert redirected_to(conn) == ~p"/users/#{user.id}"
-    html_response(conn, 302)
     refute Enum.empty?(conn.assigns.flash)
+    conn = get(conn, redirected_to(conn))
+    assert is_logged_in?(conn)
+    html_response(conn, 200)
+    
 
   end
 

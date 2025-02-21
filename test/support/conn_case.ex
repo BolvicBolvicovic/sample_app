@@ -25,6 +25,7 @@ defmodule SampleAppWeb.ConnCase do
       use SampleAppWeb, :verified_routes
       use HTMLAssertion
       import Ecto.Query
+      import SampleAppWeb.ConnTestHelpers
       alias SampleApp.Factory
       alias SampleApp.Repo
       alias SampleApp.Accounts
