@@ -18,6 +18,7 @@ defmodule SampleAppWeb.SessionController do
       {:ok, user} ->
         conn
         |> AuthPlug.login(user)
+        |> remember(login["remember_me"], user)
         |> put_flash(:info, "You are now connected")
         |> redirect(to: ~p"/users/#{user.id}")
       {:error, _} ->
@@ -25,6 +26,14 @@ defmodule SampleAppWeb.SessionController do
         |> put_flash(:error, "Incorrect email/password")
         |> redirect(to: ~p"/login")
         
+    end
+  end
+
+  defp remember(conn, remember_me, user) do
+    if String.to_atom(remember_me) do 
+      AuthPlug.remember(conn, user) 
+    else 
+      conn 
     end
   end
 

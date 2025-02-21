@@ -3,6 +3,10 @@
   <.simple_form for={@login} action="/login" phx-submit="create" phx-change="validate">
     <.input field={@login[:email]} label="Email" placeholder="user@example.com"/>
     <.input type="password" field={@login[:password]} label="Password" placeholder="**********"/>
+    <div class="flex gap-4 items-center">
+      <.input type="checkbox" field={@login[:remember_me]}/>
+      <span>Remember me on this computer</span>
+    </div>
     <:actions>
       <.button>Connect</.button>
     </:actions>

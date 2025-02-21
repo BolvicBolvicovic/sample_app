@@ -12,7 +12,8 @@ defmodule SampleAppWeb.Integration.UserLoginTest do
       |> post(~p"/login", %{
         login: %{
           email: user.email,
-          password: "wrong_password"
+          password: "wrong_password",
+          remember_me: "false"
         }
       })
 
@@ -33,7 +34,8 @@ defmodule SampleAppWeb.Integration.UserLoginTest do
       |> post(~p"/login", %{
         login: %{
           email: user.email,
-          password: "long_password"
+          password: "long_password",
+          remember_me: "false"
         }
       })
     assert is_logged_in?(conn)
@@ -55,7 +57,8 @@ defmodule SampleAppWeb.Integration.UserLoginTest do
       |> post(~p"/login", %{
         login: %{
           email: user.email,
-          password: "long_password"
+          password: "long_password",
+          remember_me: "false"
         }
       })
 
