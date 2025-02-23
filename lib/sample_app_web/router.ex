@@ -23,6 +23,7 @@ defmodule SampleAppWeb.Router do
     get "/about", StaticPageController, :about
     get "/contact", StaticPageController, :contact
     get "/signup", UserController, :new
+    get "/edit/:id", UserController, :edit
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete

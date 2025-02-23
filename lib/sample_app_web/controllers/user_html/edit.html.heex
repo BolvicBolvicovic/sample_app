@@ -1,0 +1,18 @@
+<section>
+  <h1 class="text-3xl sm:text-5xl">Edit your profile</h1>
+  <.simple_form for={@changeset} action={~p"/users/#{@user.id}"} phx-submit="edit">
+    <.link 
+      navigate="http://gravatar.com/emails"
+      target="_blank"
+      class="flex items-center gap-4 font-bold">
+      {gravatar_for(@user)} Change Gravatar
+    </.link>
+    <.input field={@changeset[:name]} label="Name" />
+    <.input field={@changeset[:email]} label="Email" />
+    <.input placeholder="********" type="password" field={@changeset[:password]} label="Password" />
+    <.input placeholder="********" type="password" field={@changeset[:password_confirmation]} label="Password Confirmation" />
+    <:actions>
+      <.button>Update</.button>
+    </:actions>
+  </.simple_form>
+</section>

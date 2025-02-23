@@ -26,4 +26,23 @@ defmodule SampleAppWeb.UserController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+    user = Accounts.get_user!(id)
+    changeset = FormData.to_form(Accounts.change_user(user), as: "changeset")
+    render(conn, :edit, user: user, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "changeset" => user_params}) do
+    user = Accounts.get_user!(id)
+
+    case Accounts.update_user(user, user_params) do
+      {:ok, user} -> 
+        conn
+        |> put_flash(:info, "Account successfully updated!")
+        |> redirect(to: ~p"/users/#{user.id}")
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, :edit, user: user, changeset: FormData.to_form(changeset, as: "changeset"))
+    end
+  end
+
 end

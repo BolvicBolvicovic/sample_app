@@ -51,7 +51,7 @@ defmodule SampleApp.MixProject do
        app: false,
        compile: false,
        depth: 1},
-      {:argon2_elixir, "2.4.0"},
+      {:argon2_elixir, "4.1.0"},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 1.0"},
