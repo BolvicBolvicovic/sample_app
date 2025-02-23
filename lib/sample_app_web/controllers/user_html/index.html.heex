@@ -1,0 +1,8 @@
+<section>
+  <h1 class="text-3xl sm:text-5xl">Users</h1>
+  <.table id="users" rows={@users} row_click={&JS.navigate(~p"/users/#{&1}")}>
+    <:col :let={user}>{gravatar_for user}</:col>
+    <:col :let={user}>{user.name}</:col>
+    <:col :let={user}>{user.email}</:col>
+  </.table>
+</section>

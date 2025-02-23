@@ -1,5 +1,7 @@
 <section class="flex gap-4 items-center justify-center">
   <div>{gravatar_for(@user)}</div>
   <.header>{@user.name}</.header>
+  <%= if @current_user && @current_user.id == @user.id do %>
   <.link navigate={~p"/edit/#{@user.id}"}>Edit Profile</.link>
+  <% end %>
 </section>

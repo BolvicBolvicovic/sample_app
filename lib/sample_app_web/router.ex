@@ -24,6 +24,7 @@ defmodule SampleAppWeb.Router do
     get "/contact", StaticPageController, :contact
     get "/signup", UserController, :new
     get "/edit/:id", UserController, :edit
+    get "/index", UserController, :index
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete

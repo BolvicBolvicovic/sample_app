@@ -5,6 +5,9 @@ defmodule SampleAppWeb.UserController do
   alias SampleApp.Accounts.User
   alias Phoenix.HTML.FormData
 
+  plug :logged_in_user when action in [:edit, :update, :index]
+  plug :correct_user when action in [:edit, :update]
+
   def new(conn, _params) do
     changeset = FormData.to_form(Accounts.change_user(%User{}), as: "user")
     render(conn, :new, page_title: "Sign up", user: changeset)
@@ -13,6 +16,11 @@ defmodule SampleAppWeb.UserController do
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     render(conn, :show, user: user)
+  end
+
+  def index(conn, _params) do
+    users = Accounts.list_users()
+    render(conn, :index, users: users)
   end
 
   def create(conn, %{"user" => user_params}) do
